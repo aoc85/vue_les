@@ -3,9 +3,12 @@
     <!--CDN VUE JS !-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.4.4/vue.js"></script>
     <!--CDN BOOTSTRAP + JQUERY !-->
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <!-- CSS !-->
+    <link href="./style.css" rel="stylesheet"></link>
+
   </head>
 
   <body>
@@ -18,24 +21,24 @@
             <th>Sobrenome</th>
             <th>Contato</th>
           </tr>
-          <tr v-for="pessoa in pessoas">
-            <td> {{ pessoa.nome }}</td>
-            <td> {{ pessoa.sobrenome }} </td>
-            <td> {{ pessoa.email }} </td>
-          </tr>
         </thead>
+        <tr v-for="pessoa in pessoas">
+          <td> {{ pessoa.nome }}</td>
+          <td> {{ pessoa.sobrenome }} </td>
+          <td> {{ pessoa.email }} </td>
+        </tr>
       </table>
-    <div>
-    <div>
-      <label>Nome</label>
-      <input type="text" class="input-group" v-model="novo.nome"/>
-      <label>Sobrenome</label>
-      <input type="text" class="input-group" v-model="novo.sobrenome"/>
-      <label>Email</label>
-      <input type="text" class="input-group" v-model="novo.email"/>
-      <button class="btn btn-success btn-xs" v-on:click="adicionar(novo)">Salvar</button>
-      <div>
-        {{ novo.nome }} {{ novo.sobrenome }} {{ novo.email }}
+      <div class="input-group">
+        <label>Nome</label><br>
+        <input type="text" class="form-control col-md-4" v-model="novo.nome"/><br>
+        <label>Sobrenome</label><br>
+        <input type="text" class="form-control col-md-6" v-model="novo.sobrenome"/><br>
+        <label>Email</label><br>
+        <input type="text" class="form-control col-md-6" v-model="novo.email"><br>
+        <button class="btn btn-success btn-xs" v-on:click="adicionar(novo)">Salvar</button>
+        <div>
+          {{ novo.nome }} {{ novo.sobrenome }} {{ novo.email }}
+        </div>
       </div>
     </div>
 
@@ -53,7 +56,8 @@
      },
      methods:{
        adicionar: function(valor) {
-         this.pessoas.push(valor);
+         var nova_pessoa = valor;
+         this.pessoas.push(nova_pessoa);
        }
      }
    })
